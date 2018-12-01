@@ -1,6 +1,59 @@
 <h2>{{titulo}}</h2>
+<p>Añadir marca</p>
+<p>
+    <input type="text" [(ngModel)]="mi_marca" (blur)="onBlur()">
+    <button (click)="getMarca()">Mostrar Marca</button>
+    <button (click)="addMarca()">Añadir Marca</button>
+</p>
+<p>{{mi_marca}}</p>
+
+
+<p>Compra las zapatillas de las mejores Marcas</p>
     <ul>
-        <li>Nike</li>
-        <li>Adidas</li>
-        <li>Rebook</li>
+        <li *ngFor="let marca of marcas; let indice = index">{{indice + ' - ' + marca}}
+            <button (click)="borrarMarca(index)">Borrar</button>
+        </li>
+    </ul>
+<p>Las Deportivas que tenemos disponibles son las siguientes:</p>
+
+    <ul>
+        <li *ngFor="let deportiva of zapatillas">
+       <span [ngStyle]="{
+           'text-decoration': !deportiva.stock ? 'line-through' : 'none'
+       }">
+        {{deportiva.nombre}} - 
+        <strong [class.altoPrecio]="deportiva.precio >=80"
+           [ngClass]="{
+               'fondoRojo': deportiva.precio >100,
+               'subrayado': deportiva.marca == 'Nike'
+            }" >
+        Q {{deportiva.precio}}.00
+        </strong>
+        <span *ngIf="deportiva.precio < 80" class="parpadea">        
+            ¡EN OFERTA!
+        </span>
+        </span>
+        </li>
+    </ul>
+
+    <p>El color de la mayoria de nuestras zapatillas es:</p>
+    <input type="text" [(ngModel)]="color">
+    <ul [ngSwitch]="color">
+        <li *ngSwitchCase="'yellow'">
+            El color Predominande es el <span [ngStyle]="{
+                'background': color}">amarillo.</span>
+        </li>
+        <li *ngSwitchCase="'red'">
+                El color Predominande es el <span [ngStyle]="{
+                    'background': color}">rojo.</span>
+        </li>
+        <li *ngSwitchCase="'blue'">
+                El color Predominande es el <span [ngStyle]="{
+                    'background': color}">azul.</span>
+        </li>
+        <li *ngSwitchCase="'orange'">
+                El color Predominande es el <span [ngStyle]="{
+                    'background': color}">naranja.</span>
+        </li>
+            
     </ul>

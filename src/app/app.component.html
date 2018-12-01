@@ -1,8 +1,23 @@
-<div style="text-align:center">
-  <h1>
+<div [ngStyle]="{'background': config.fondo}">
+  <h1 [ngStyle]="{'color': config.color}">
     Bienvenido al {{ title }}!
   </h1>
+  <p [ngStyle]="{'color': config.color}">{{ config.descripcion }}</p>
 </div>
-<videojuego></videojuego>
+<nav class="navegacion">
+    <a [routerLink]="['/home']" [routerLinkActive]="['active']">Home</a>
+    <a [routerLink]="['/zapatillas']" [routerLinkActive]="['active']">Zapatillas</a>
+    <a [routerLink]="['/cursos']" [routerLinkActive]="['active']">Cursos</a>
+    <a [routerLink]="['/videojuego']" [routerLinkActive]="['active']">Video Juegos</a>
+    <a [routerLink]="['/externo']" [routerLinkActive]="['active']">Externo</a>
+  </nav>
+<router-outlet></router-outlet>
+
+
+<!--
+<button (click)="ocultarVideojuegos(false)" *ngIf="mostrar_videojuegos">Ocultar</button>
+<button (click)="ocultarVideojuegos(true)" *ngIf="!mostrar_videojuegos">Mostrar</button>
+
+<videojuego *ngIf="mostrar_videojuegos"></videojuego>
 <zapatillas></zapatillas>
-<cursos></cursos>
+<cursos></cursos>-->
