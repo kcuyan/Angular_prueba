@@ -1,3 +1,10 @@
-<p>
-  externo works!
-</p>
+
+<div class="datos" *ngIf="user">
+    <img id="avatar" src="{{user.avatar}}" alt="">
+    <h2>{{user.first_name+" "+user.last_name}}</h2>
+    <h3>Carga tu usuario</h3>
+    <input type="text"[(ngModel)]="user_id" (keyup.enter)="cargaUsuario()">
+    <div *ngIf="!user">
+        <img src="http://volunteerglos.org.uk/images/spinner.gif" alt="">
+    </div>
+</div>

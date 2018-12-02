@@ -12,8 +12,8 @@ export class PeticionesService{
         this.url = "https://reqres.in";
     }
     
-    getUser():Observable<any>{
-        return this._http.get(this.url+'/api/users');
+    getUser(user_id):Observable<any>{
+        return this._http.get(this.url+'/api/users/'+user_id);
     }
 
 

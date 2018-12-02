@@ -1,0 +1,19 @@
+.datos{
+    background-color: rgba(217, 225, 228, 0.658);
+    text-align: center;
+    width: 250px;
+    height: 300px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -75px;
+    margin-left: -75px;
+    padding: 25px;
+    font-family: arial;
+}
+#avatar{
+    width:130px;
+    height:130px;
+    border-radius:150px;
+
+}
