@@ -1,10 +1,38 @@
-
+{{fecha | date: 'fullDate' | uppercase}} <br>
+{{'HACIENDO MINUSCULAS USANDO PIPES' | lowercase}}
+<hr>
+<input type="number" [(ngModel)]="numero1" placeholder="Ingresa un numero"> <br>
+<input type="number" [(ngModel)]="numero2" placeholder="Ingresa un numero"> <br>
+<button (click)="ejecutar()">ejecute el comando</button>
+<div *ngIf="prueba">{{numero1 | calculadora: numero2}}</div>
 <div class="datos" *ngIf="user">
     <img id="avatar" src="{{user.avatar}}" alt="">
     <h2>{{user.first_name+" "+user.last_name}}</h2>
     <h3>Carga tu usuario</h3>
     <input type="text"[(ngModel)]="user_id" (keyup.enter)="cargaUsuario()">
     <div *ngIf="!user">
-        <img src="http://volunteerglos.org.uk/images/spinner.gif" alt="">
+      <img src="http://volunteerglos.org.uk/images/spinner.gif" alt="">
     </div>
+    <p>{{fecha | date:'dd-MM-yy'+' / '+'hh:mm'+' '+'a'}}</p><!--PIPE | fullDate -->
 </div>
+<hr>
+<h2>Crear Usuario</h2>
+  <form #newUser="ngForm" (ngSubmit)="onSubmit(newUser)">
+    <p>
+      <label for="name">Nombre</label>
+      <input type="text" name="name" #name="ngModel" [(ngModel)]="new_user.name" required><span *ngIf="name.touched && !name.valid">El Nombre no es valido</span>
+    </p>
+    <p>
+        <label for="job">Tranajo</label>
+        <input type="text" name="job" #job="ngModel" [(ngModel)]="new_user.job" required> <span *ngIf="job.touched && !job.valid">El Trabajo no es valido</span>
+      </p>
+
+      <input type="submit" value="Guardar Usuario" [disabled]="!newUser.form.valid">
+
+  </form>
+
+  <div *ngIf="user_save">
+    <h4>{{user_save.name}}</h4>
+    <h4>{{user_save.job}}</h4>
+   
+  </div>
